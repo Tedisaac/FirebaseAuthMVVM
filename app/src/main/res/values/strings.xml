@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Firebase Authentication MVVM</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="show_password">Show Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="hey_text">Hey</string>
+</resources>

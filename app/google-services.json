@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "591845161903",
+    "project_id": "calcium-storm-196510",
+    "storage_bucket": "calcium-storm-196510.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591845161903:android:732205f08a3bb2ba2b8d5a",
+        "android_client_info": {
+          "package_name": "com.ted.firebaseauthenticationmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591845161903-nnon3efvk6jm09j6bi4m0g8qe9t3q924.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZCSepMRuiTbrpymev3RHdys-0DTxfpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591845161903-nnon3efvk6jm09j6bi4m0g8qe9t3q924.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591845161903:android:303bd4a028433d392b8d5a",
+        "android_client_info": {
+          "package_name": "com.ted.mvvmauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591845161903-nnon3efvk6jm09j6bi4m0g8qe9t3q924.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZCSepMRuiTbrpymev3RHdys-0DTxfpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591845161903-nnon3efvk6jm09j6bi4m0g8qe9t3q924.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
