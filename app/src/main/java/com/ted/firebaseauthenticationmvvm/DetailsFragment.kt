@@ -1,6 +1,8 @@
 package com.ted.firebaseauthenticationmvvm
 
+import android.animation.Animator.AnimatorListener
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ted.firebaseauthenticationmvvm.databinding.FragmentDetailsBinding
 import com.ted.firebaseauthenticationmvvm.viewmodels.SignedInViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.TimeUnit
 
 class DetailsFragment : Fragment() {
 
     private var _detailsBinding: FragmentDetailsBinding? = null
     private val detailsBinding get() = _detailsBinding!!
+    private var handler: Handler? = null
 
     private val signedInViewModel by lazy {
         ViewModelProvider(this)[SignedInViewModel::class.java]
@@ -44,7 +51,9 @@ class DetailsFragment : Fragment() {
 
         _detailsBinding = FragmentDetailsBinding.inflate(inflater, container, false)
 
-        detailsBinding.txtUsername.text  = "Isaac"
+        detailsBinding.lottieHey.playAnimation()
+        detailsBinding.lottieHey.setOnClickListener {  detailsBinding.lottieHey.playAnimation() }
+
         detailsBinding.fabSignOut.setOnClickListener { switchToSignInScreen() }
 
         return detailsBinding.root
@@ -57,5 +66,6 @@ class DetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _detailsBinding = null
+        handler = null
     }
 }

@@ -8,4 +8,9 @@
     </style>
 
     <style name="Theme.FirebaseAuthenticationMVVM" parent="Base.Theme.FirebaseAuthenticationMVVM" />
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+
 </resources>

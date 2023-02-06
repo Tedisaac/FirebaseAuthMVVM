@@ -49,20 +49,24 @@ class SignUpFragment : Fragment() {
         val confirmPassword = signUpBinding.edConfirmPasswordSignUp.text.toString()
 
         if (email.isEmpty()){
-            CustomViews.showSnackBar(signUpBinding.root, "Email Required")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signUpBinding.root)
+            CustomViews.showSnackBar(signUpBinding.root, "Email Required", requireActivity())
         }else  if (password.isEmpty()){
-            CustomViews.showSnackBar(signUpBinding.root, "Password Required")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signUpBinding.root)
+            CustomViews.showSnackBar(signUpBinding.root, "Password Required", requireActivity())
         }else  if (confirmPassword.isEmpty()){
-            CustomViews.showSnackBar(signUpBinding.root, "Confirm Password Required")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signUpBinding.root)
+            CustomViews.showSnackBar(signUpBinding.root, "Confirm Password Required", requireActivity())
         }else  if (password != confirmPassword){
-            CustomViews.showSnackBar(signUpBinding.root, "Passwords do not match!!")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signUpBinding.root)
+            CustomViews.showSnackBar(signUpBinding.root, "Passwords do not match!!", requireActivity())
         }else{
-            signUp(email, password)
+            signUp(email, password, signUpBinding.root)
         }
     }
 
-    private fun signUp(email: String, password: String) {
-        authViewModel.signUp(email, password)
+    private fun signUp(email: String, password: String, view: View) {
+        authViewModel.signUp(email, password, view, requireActivity())
     }
 
     private fun switchToSignInScreen() {

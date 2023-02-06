@@ -1,11 +1,14 @@
 package com.ted.firebaseauthenticationmvvm.repository
 
 import android.app.Application
+import android.content.Context
 import android.os.Build
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.ted.firebaseauthenticationmvvm.utils.CustomViews
 
 class AuthRepository(application: Application) {
 
@@ -35,26 +38,32 @@ class AuthRepository(application: Application) {
         return  loggedOutLiveData!!
     }
 
-    fun signUp(email: String, password: String){
+    fun signUp(email: String, password: String, view: View, context: Context){
+        CustomViews.showLoadingDialog(context)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             firebaseAuth?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener(application.mainExecutor!!) { task ->
-                if (task.isSuccessful){
+                if (task.isSuccessful) {
+                    CustomViews.dismissLoadingDialog()
                     userLiveData?.value = firebaseAuth?.currentUser
-                }else{
-                    Toast.makeText(application.applicationContext, "Failed!!", Toast.LENGTH_SHORT).show()
                 }
+            }?.addOnFailureListener(application.mainExecutor) { exception->
+                CustomViews.dismissLoadingDialog()
+                CustomViews.showSnackBar(view, exception.message.toString(), context)
             }
         }
     }
 
-    fun signIn(email: String, password: String){
+    fun signIn(email: String, password: String, view: View, context: Context){
+        CustomViews.showLoadingDialog(context)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             firebaseAuth?.signInWithEmailAndPassword(email, password)?.addOnCompleteListener(application.mainExecutor!!) { task ->
                 if (task.isSuccessful){
+                    CustomViews.dismissLoadingDialog()
                     userLiveData?.value = firebaseAuth?.currentUser
-                }else{
-                    Toast.makeText(application.applicationContext, "Failed!!", Toast.LENGTH_SHORT).show()
                 }
+            }?.addOnFailureListener(application.mainExecutor) { exception->
+                CustomViews.dismissLoadingDialog()
+                CustomViews.showSnackBar(view, exception.message.toString(), context)
             }
         }
     }

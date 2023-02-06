@@ -53,19 +53,21 @@ class SignInFragment : Fragment() {
         val password = signInBinding.edPasswordSignIn.text.toString()
 
         if (email.isEmpty()){
-            CustomViews.showSnackBar(signInBinding.root, "Email Required")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signInBinding.root)
+            CustomViews.showSnackBar(signInBinding.root, "Email Required", requireActivity())
         }
         else if (password.isEmpty()){
-            CustomViews.showSnackBar(signInBinding.root, "Password Required")
+            CustomViews.hideSoftKeyBoard(requireActivity(), signInBinding.root)
+            CustomViews.showSnackBar(signInBinding.root, "Password Required", requireActivity())
         }else
         {
-            signIn(email, password)
+            signIn(email, password, signInBinding.root)
         }
 
     }
 
-    private fun signIn(email: String, password: String) {
-        authViewModel.signIn(email, password)
+    private fun signIn(email: String, password: String, view: View) {
+        authViewModel.signIn(email, password, view, requireActivity())
     }
 
     override fun onDestroyView() {
